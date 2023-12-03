@@ -1,0 +1,13 @@
+h1 {
+  color : white;
+  padding-top : 25px;
+  text-align : center;
+  font-family : 华文楷体;
+}
+#title {
+  background-color : #0a2399;
+  margin-top : -22px;
+  width : 100%;
+  height : 100px;
+  margin-bottom : 20px;
+}
