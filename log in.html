@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>七灯禳星_登录</title>
+  <link rel="stylesheet" type="text/css" href="css/heading.css">
+  <link rel="stylesheet" type="text/css" href="css/h1.css">
+  <style>
+    /*
+    These are the styles of the heading part.
+    */
+
+    .heading {
+      background-color :#0a2399;
+      height : 7ex;
+      border-bottom : 3px solid gray;
+    }
+    .heading:hover {
+      background-color : white;
+    }
+    #account {
+      max-width : 3%;
+      width : auto;
+      height : auto;
+      float : left;
+      margin-left : 50%;
+      margin-top : 5px;
+      margin-right : 5px;
+    }
+    #account:hover {
+      background-color : #b3d4fc;
+    }
+    .logInButton {
+      width : 10em;
+      height : 7ex;
+      margin-top : 6px;
+      font-weight : bold;
+      float : left;
+    }
+    .logInButton:hover {
+      background-color : deepskyblue;
+      color : white;
+    }
+    #menu_dropDown {
+      float : left;
+      margin-left : 10%;
+      color : white;
+    }
+    #menu_dropDown:hover {
+      color : blue;
+    }
+    #search {
+      max-width : 3%;
+      width : auto;
+      height : auto;
+      margin-top : 4px;
+      margin-left : 5px;
+    }
+    #search:hover {
+      background-color : #b3d4fc;
+    }
+    /*
+    These are the styles of the title part.
+     */
+    h1 {
+      color : white;
+      padding-top : 25px;
+    }
+    #title {
+      background-color : #0a2399;
+      margin-top : -22px;
+      width : 100%;
+      height : 100px;
+      margin-bottom : 20px;
+    }
+
+    /*
+    These are the styles of the text.
+     */
+    #LogInPart {
+      text-align : center;
+      margin-top : 50px;
+    }
+    input {
+      margin-bottom : 10px;
+      margin-top : 10px;
+    }
+    #LogInButton {
+      width : 7em;
+      height : 5ex;
+      background-color : #2180f4;
+      border-radius : 7px;
+    }
+    #LogInButton:hover {
+      background-color : #b3d4fc;
+    }
+    #button_logIn {
+      font-size : 17px;
+      font-family : 黑体;
+      color : white;
+    }
+    /*
+    These are the styles of the bottom part.
+     */
+    #report {
+      font-family: 黑体;
+      text-decoration-line: blink;
+    }
+    #go-to-create {
+      margin-left : 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="heading">
+    <h4 style="font-family : sans-serif;" id="menu_dropDown">Menu</h4>
+    <img src="img/logo.png" alt="logo" id="logo">
+    <a href="home.html"><h5 id="heading-home">Arieldal</h5></a>
+    <a href="my account.html"><img src="img/My account.png" alt="my account" id="account"></a>
+    <a href="log in.html"><button type="button" class="logInButton"><span id="logIn">登录</span></button></a>
+    <img src="img/search.png" alt="search" id="search">
+  </div>
+  <div id="title">
+    <h1>登录</h1>
+  </div>
+  <div id="LogInPart">
+    <label style="font-size : 20px; font-family : 黑体;" for="username">用户名或邮箱地址：<br>
+      <input type="text" id="username" name="username" required minlength="5" maxlength="25" size="25">
+    </label><br>
+    <label style="font-size : 20px; font-family : 黑体;" for="password">密码：<br>
+      <input type="text" id="password" name="password" required minlength="5" maxlength="25" size="25"><br>
+    </label>
+    <button type="button" id="LogInButton">
+      <span id="button_logIn">登录</span>
+    </button>
+  </div>
+  <a href="create%20an%20account.html"><h5 id="go-to-create">还没有账户？点我注册！</h5></a>
+  <div id="bottom">
+    <a href="report a problem.html"><h6 id="report">报告一个问题</h6></a>
+    <a><h6></h6></a>
+  </div>
+  <script>
+    var goCreate = document.getElementById("go-to-create");
+    var helloEl = "您好";
+    var button = document.getElementById("LogInButton");
+    var buttonClick = function () {
+      var finishEl = document.getElementById("LogInPart");
+      var name = document.getElementById("username").value;
+      var second = 5;
+      finishEl.innerHTML = helloEl + "，" + name + " " + "！" + second + "秒后自动跳转首页";
+      goCreate .innerHTML = "";
+      /*
+      buttonEl.innerHTML = name;
+       */
+      var time = document.getElementsByTagName("h3");//放在循环体内每次都执行无意义
+      //定义一个方法，获取span标签，修改标签体内容，时间--
+      function showtime() {
+        second--;
+        //在方法中判断时间如果<=0,则跳转到首页
+        if (second <= 0) location.href = "home.html";
+        if (second > 0) time.innerHTML = second + "";//innerHTML的值是一个字符串，我们把second转换成字符串
+      }
+
+      //设置定时器 1s执行一次该方法
+      setInterval(showtime, 1000);
+    };
+    button.addEventListener("click", buttonClick)
+  </script>
+</body>
