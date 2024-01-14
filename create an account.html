@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>七灯禳星_注册</title>
+  <link rel="stylesheet" type="text/css" href="css/heading.css">
+  <link rel="stylesheet" type="text/css" href="css/h1.css">
+  <style>
+    input {
+      margin-bottom : 10px;
+      margin-top : 5px;
+    }
+    #create {
+      text-align: center;
+      margin-top : 50px;
+    }
+    #create-button {
+      width : 7em;
+      height : 5ex;
+      background-color : #2180f4;
+      border-radius : 7px;
+    }
+    #create-button:hover {
+      background-color : #b3d4fc;
+    }
+    #create-text {
+      font-size : 15px;
+      color : white;
+      font-family : sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="heading">
+    <h4 style="font-family : sans-serif;" id="menu_dropDown">Menu</h4>
+    <img src="img/logo.png" alt="logo" id="logo">
+    <a href="home.html"><h5 id="heading-home">七灯禳星</h5></a>
+    <a href="my account.html"><img src="img/My%20account.png" alt="my account" id="account"></a>
+    <a href="log in.html"><button type="button" class="logInButton"><span id="logIn">登录</span></button></a>
+    <img src="img/search.png" alt="search" id="search">
+  </div>
+  <div id="title">
+    <h1>注册</h1>
+  </div>
+  <div id="create">
+    <label style="font-size : 20px;" for="username">用户名：<br>
+      <input id="username" type="text" name="username" required minlength="5" maxlength="12" size="25"><br>
+    </label>
+    <label style="font-size: 20px;" for="password">密码：<br>
+      <input id="password" type="text" name="password" required minlength="6" maxlength="25" size="25"><span id="password-side"></span> <br>
+    </label>
+    <label style="font-size:15px;">（密码长度在6~20个字符之间）</label><br>
+    <label style="font-size: 20px;" for="password-again">请再次输入密码：<br>
+      <input id="password-again" type="text" name="password-again" required minlength="6" maxlength="25" size="25"><br>
+    </label>
+    <span id="password-check"></span>
+    <button type="button" id="create-button">
+      <span id="create-text">注册</span>
+    </button>
+  </div>
+  <script>
+    var password = document.getElementById("password");
+    var password2 = document.getElementById("password-again");
+    var create = document.getElementById("create");
+    var createButton = document.getElementById("create-button");
+    var passwordSide = document.getElementById("password-side");
+    var back = document.createElement("h3");
+    back.innerText = "点击返回首页";
+    var check = function() {
+      if(password.value.length < 6 || password.value.length > 20) {
+        alert("密码长度不正确，请重新输入");
+      }
+      if(password.value === password2.value && password.value.length >= 6) {
+        passwordSide.innerHTML = "密码核验正确";
+        back.innerText = back.innerText.link("home.html");
+        create.innerHTML = "注册成功！" + back.textContent;
+      }
+      if(password.value !== password2.value) {
+        alert("两次密码不一致，请重新输入");
+      }
+    };
+    createButton.addEventListener("click", check);
+  </script>
+</body>
+</html>
